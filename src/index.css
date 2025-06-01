@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+html{
+    scrollbar-width:thin;
+}
+
+.sidebar-item.active {
+    background-color: rgba(99, 102, 241, 0.2);
+    border-left: 4px solid #6366f1;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.dropdown-content{
+    display:none;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
