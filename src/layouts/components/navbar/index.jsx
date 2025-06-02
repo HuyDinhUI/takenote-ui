@@ -10,7 +10,7 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const Header = () => {
+export const Navbar = () => {
   return (
     <nav className="bg-indigo-600 text-white shadow-md fixed w-full z-10">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">

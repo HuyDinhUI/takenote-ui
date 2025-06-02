@@ -1,5 +1,7 @@
 export const Footer = () =>{
     return (
-        <div>Footer</div>
+        <footer className="wrapper w-full h-5">
+            
+        </footer>
     )
 }
