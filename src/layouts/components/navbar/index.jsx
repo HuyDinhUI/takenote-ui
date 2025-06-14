@@ -10,7 +10,23 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
+import authorizedAxiosInstance from "../../../utils/axios";
+import { useNavigate } from "react-router-dom";
+
 export const Navbar = () => {
+
+  const navigate = useNavigate()
+
+  const logout = async () => {
+    try {
+      const res = await authorizedAxiosInstance.delete(
+        "http://localhost:5024/v1/users/logout"
+      );
+
+      navigate("/login");
+    } catch (error) {}
+  };
+
   return (
     <nav className="bg-indigo-600 text-white shadow-md fixed w-full z-10">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -23,7 +39,7 @@ export const Navbar = () => {
               className="text-2xl mr-2"
               icon={faClipboardCheck}
             />
-            <h1 className="text-xl font-bold">TaskNote Pro</h1>
+            <h1 className="text-xl font-bold">TaskNote</h1>
           </div>
         </div>
 
@@ -62,13 +78,13 @@ export const Navbar = () => {
                 <FontAwesomeIcon className="mr-2" icon={faCog} /> Cài đặt
               </a>
               <div className="border-t border-gray-200"></div>
-              <a
-                href="#"
+              <button
+                onClick={() => logout()}
                 className="block px-4 py-2 hover:bg-gray-100 text-red-500"
               >
                 <FontAwesomeIcon className="mr-2" icon={faSignOutAlt} /> Đăng
                 xuất
-              </a>
+              </button>
             </div>
           </div>
         </div>

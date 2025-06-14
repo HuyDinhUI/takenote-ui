@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import { GoogleIcon } from "../../assets/Icon";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import authorizedAxiosInstance from '../../utils/axios'
-
+import authorizedAxiosInstance from "../../utils/axios";
 
 export const Login = () => {
   const {
@@ -13,7 +12,7 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const submitLogin = async (data) => {
     console.log("submit login: ", data);
@@ -23,7 +22,7 @@ export const Login = () => {
         data
       );
       if (res.data.role === "customer") {
-        navigate('/');
+        navigate("/");
       } else navigate("/admin");
     } catch (error) {}
   };
@@ -39,7 +38,10 @@ export const Login = () => {
           <h1 className="text-4xl text-indigo-600 font-bold">TaskNote</h1>
         </div>
         <span>Sign in to access your notes</span>
-        <form onSubmit={handleSubmit(submitLogin)} className="gap-2 w-full my-5 ">
+        <form
+          onSubmit={handleSubmit(submitLogin)}
+          className="gap-2 w-full my-5 "
+        >
           <div className="">
             <span>Email</span>
             <input
@@ -69,7 +71,10 @@ export const Login = () => {
             <input type="checkbox" className="" />
             <span className="mx-1">Remember me</span>
           </div>
-          <button type="submit" className="w-full p-3 font-bold text-white bg-indigo-600 rounded-xl">
+          <button
+            type="submit"
+            className="w-full p-3 font-bold text-white bg-indigo-600 rounded-xl"
+          >
             Sign In
           </button>
         </form>
@@ -77,7 +82,12 @@ export const Login = () => {
           <span className="bg-white absolute -top-4 px-2 right-[50%] translate-x-[50%]">
             or
           </span>
-          <div className="flex gap-10 mt-5">
+          <div
+            onClick={() =>
+              (window.location.href = "http://localhost:5024/v1/auth/google")
+            }
+            className="flex gap-10 mt-5"
+          >
             <div className="flex items-center justify-center w-full ring-1 p-2 ring-gray-200 rounded-sm">
               <GoogleIcon />
               <span className="ml-1">Google</span>
